@@ -47,7 +47,9 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listBoxSign = new System.Windows.Forms.ListBox();
             this.textBoxSign = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewSign = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -116,12 +118,13 @@
             // 
             // btnSignOutput
             // 
-            this.btnSignOutput.Location = new System.Drawing.Point(818, 59);
+            this.btnSignOutput.Location = new System.Drawing.Point(818, 144);
             this.btnSignOutput.Name = "btnSignOutput";
             this.btnSignOutput.Size = new System.Drawing.Size(118, 53);
             this.btnSignOutput.TabIndex = 12;
             this.btnSignOutput.Text = "Abfahrtstafel ausgeben";
             this.btnSignOutput.UseVisualStyleBackColor = true;
+            this.btnSignOutput.Click += new System.EventHandler(this.btnSignOutput_Click);
             // 
             // label6
             // 
@@ -186,7 +189,6 @@
             this.listViewOutput.TabIndex = 19;
             this.listViewOutput.UseCompatibleStateImageBehavior = false;
             this.listViewOutput.View = System.Windows.Forms.View.Details;
-            this.listViewOutput.SelectedIndexChanged += new System.EventHandler(this.listViewOutput_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -211,7 +213,7 @@
             this.listBoxSign.Name = "listBoxSign";
             this.listBoxSign.Size = new System.Drawing.Size(173, 84);
             this.listBoxSign.TabIndex = 20;
-            this.listBoxSign.SelectedIndexChanged += new System.EventHandler(this.listBoxSign_SelectedIndexChanged);
+            this.listBoxSign.Click += new System.EventHandler(this.listBoxSign_Click);
             // 
             // textBoxSign
             // 
@@ -222,13 +224,28 @@
             this.textBoxSign.TabIndex = 21;
             this.textBoxSign.TextChanged += new System.EventHandler(this.textBoxSign_TextChanged);
             // 
-            // listView1
+            // listViewSign
             // 
-            this.listView1.Location = new System.Drawing.Point(502, 249);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(434, 301);
-            this.listView1.TabIndex = 22;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewSign.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listViewSign.GridLines = true;
+            this.listViewSign.Location = new System.Drawing.Point(502, 249);
+            this.listViewSign.Name = "listViewSign";
+            this.listViewSign.Size = new System.Drawing.Size(434, 301);
+            this.listViewSign.TabIndex = 22;
+            this.listViewSign.UseCompatibleStateImageBehavior = false;
+            this.listViewSign.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Name";
+            this.columnHeader4.Width = 132;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Nach";
+            this.columnHeader5.Width = 259;
             // 
             // Form1
             // 
@@ -236,7 +253,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1010, 577);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewSign);
             this.Controls.Add(this.textBoxSign);
             this.Controls.Add(this.listBoxSign);
             this.Controls.Add(this.listViewOutput);
@@ -280,7 +297,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ListBox listBoxSign;
         private System.Windows.Forms.TextBox textBoxSign;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewSign;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
 

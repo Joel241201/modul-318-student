@@ -20,7 +20,7 @@ namespace SwissTransportGUI
         //Transport Objekt erstellen
         Transport t = new Transport();
         // Methode um Dropdown Menu zu Öffnen und Vorschläge anzeigen
-        public void stationSearch(string StationsName, ListBox listBoxName)
+        private void stationSearch(string StationsName, ListBox listBoxName)
         {
             listBoxName.Items.Clear();
             Stations myStations = t.GetStations(StationsName);
@@ -39,11 +39,10 @@ namespace SwissTransportGUI
         }
 
         //Verbindungen anzeigen lassen
-        private void Connections(ListView listViewName)
+        private void connections(ListView listViewName)
         {
-            listViewOutput.Items.Clear();
+            listViewName.Items.Clear();
             Connections connection = t.GetConnections(textBoxFrom.Text, textBoxTo.Text);
-            
             foreach (Connection c in connection.ConnectionList)
             {
                 DateTime Departure = DateTime.Parse(c.From.Departure);
@@ -59,6 +58,30 @@ namespace SwissTransportGUI
                 catch
                 {
                     MessageBox.Show("Es gibt keine Verbindungen zwischen diesen Stationen");
+                }
+            }
+        }
+
+        private void stationBoard(ListView listViewName)
+        {
+            listViewSign.Items.Clear();
+            Stations s = t.GetStations(textBoxSign.Text);
+            Station selectedStation = s.StationList[listBoxSign.SelectedIndex];
+            StationBoardRoot stationBoard = t.GetStationBoard(textBoxSign.Text, selectedStation.Id);
+            foreach(StationBoard stationboard in stationBoard.Entries)
+            {
+                try
+                {
+                    ListViewItem item1 = new ListViewItem();
+                    item1.Text = stationboard.Name;
+                    item1.SubItems.Add(stationboard.To);
+                    listViewSign.Items.Add(item1);
+                    
+                    
+                }
+                catch
+                {
+                    MessageBox.Show("Ungültiger Wert");
                 }
             }
         }
@@ -102,12 +125,7 @@ namespace SwissTransportGUI
 
         private void btnconnection_Click(object sender, EventArgs e)
         {
-            Connections(listViewOutput);
-        }
-
-        private void listViewOutput_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            connections(listViewOutput);
         }
 
         private void textBoxSign_TextChanged(object sender, EventArgs e)
@@ -115,17 +133,21 @@ namespace SwissTransportGUI
             stationSearch(textBoxSign.Text, listBoxSign);
         }
 
-        private void listBoxSign_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxSign_Click(object sender, EventArgs e)
         {
             try
             {
-                textBoxSign.Text = listBoxTo.SelectedItems[0].ToString();
-                listBoxTo.Items.Clear();
+                textBoxSign.Text = listBoxSign.SelectedItems[1].ToString();                
             }
             catch
             {
-                MessageBox.Show("Wählen sie bitte eine Station aus:");
+                
             }
+        }
+
+        private void btnSignOutput_Click(object sender, EventArgs e)
+        {
+            stationBoard(listViewSign);
         }
     }
 }
