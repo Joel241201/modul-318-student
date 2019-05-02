@@ -50,6 +50,7 @@
             this.listViewSign = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@
             this.btnConnection.Location = new System.Drawing.Point(371, 258);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(110, 42);
-            this.btnConnection.TabIndex = 7;
+            this.btnConnection.TabIndex = 2;
             this.btnConnection.Text = "Verbindungen suchen";
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnconnection_Click);
@@ -121,7 +122,7 @@
             this.btnSignOutput.Location = new System.Drawing.Point(818, 144);
             this.btnSignOutput.Name = "btnSignOutput";
             this.btnSignOutput.Size = new System.Drawing.Size(118, 53);
-            this.btnSignOutput.TabIndex = 12;
+            this.btnSignOutput.TabIndex = 4;
             this.btnSignOutput.Text = "Abfahrtstafel ausgeben";
             this.btnSignOutput.UseVisualStyleBackColor = true;
             this.btnSignOutput.Click += new System.EventHandler(this.btnSignOutput_Click);
@@ -131,7 +132,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Red;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 9);
+            this.label6.Location = new System.Drawing.Point(496, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(176, 32);
             this.label6.TabIndex = 14;
@@ -143,8 +144,9 @@
             this.textBoxFrom.Location = new System.Drawing.Point(66, 90);
             this.textBoxFrom.Name = "textBoxFrom";
             this.textBoxFrom.Size = new System.Drawing.Size(122, 22);
-            this.textBoxFrom.TabIndex = 15;
+            this.textBoxFrom.TabIndex = 0;
             this.textBoxFrom.TextChanged += new System.EventHandler(this.textBoxFrom_TextChanged);
+            this.textBoxFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFrom_KeyDown);
             // 
             // textBoxTo
             // 
@@ -152,8 +154,9 @@
             this.textBoxTo.Location = new System.Drawing.Point(264, 90);
             this.textBoxTo.Name = "textBoxTo";
             this.textBoxTo.Size = new System.Drawing.Size(114, 22);
-            this.textBoxTo.TabIndex = 16;
+            this.textBoxTo.TabIndex = 1;
             this.textBoxTo.TextChanged += new System.EventHandler(this.textBoxTo_TextChanged);
+            this.textBoxTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTo_KeyDown);
             // 
             // listBoxFrom
             // 
@@ -163,6 +166,7 @@
             this.listBoxFrom.Name = "listBoxFrom";
             this.listBoxFrom.Size = new System.Drawing.Size(162, 132);
             this.listBoxFrom.TabIndex = 17;
+            this.listBoxFrom.TabStop = false;
             this.listBoxFrom.Click += new System.EventHandler(this.listBoxFrom_Click);
             // 
             // listBoxTo
@@ -173,6 +177,7 @@
             this.listBoxTo.Name = "listBoxTo";
             this.listBoxTo.Size = new System.Drawing.Size(162, 132);
             this.listBoxTo.TabIndex = 18;
+            this.listBoxTo.TabStop = false;
             this.listBoxTo.Click += new System.EventHandler(this.listBoxTo_Click);
             // 
             // listViewOutput
@@ -221,14 +226,15 @@
             this.textBoxSign.Location = new System.Drawing.Point(625, 87);
             this.textBoxSign.Name = "textBoxSign";
             this.textBoxSign.Size = new System.Drawing.Size(173, 22);
-            this.textBoxSign.TabIndex = 21;
+            this.textBoxSign.TabIndex = 3;
             this.textBoxSign.TextChanged += new System.EventHandler(this.textBoxSign_TextChanged);
             // 
             // listViewSign
             // 
             this.listViewSign.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader6});
             this.listViewSign.GridLines = true;
             this.listViewSign.Location = new System.Drawing.Point(502, 249);
             this.listViewSign.Name = "listViewSign";
@@ -245,7 +251,12 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Nach";
-            this.columnHeader5.Width = 259;
+            this.columnHeader5.Width = 223;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "zeit";
+            this.columnHeader6.Width = 73;
             // 
             // Form1
             // 
@@ -300,6 +311,7 @@
         private System.Windows.Forms.ListView listViewSign;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

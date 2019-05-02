@@ -75,7 +75,9 @@ namespace SwissTransportGUI
                     ListViewItem item1 = new ListViewItem();
                     item1.Text = stationboard.Name;
                     item1.SubItems.Add(stationboard.To);
+                    item1.SubItems.Add(stationboard.Stop.Departure.ToShortTimeString());
                     listViewSign.Items.Add(item1);
+
                     
                     
                 }
@@ -86,6 +88,28 @@ namespace SwissTransportGUI
             }
         }
 
+        private void autoFill(KeyEventArgs e, TextBox textBoxName, ListBox listBoxName)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    listBoxName.SelectedIndex--;
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    listBoxName.SelectedIndex++;
+                }
+                else if (e.KeyCode == Keys.Enter)
+                {
+                    textBoxName.Text = listBoxName.SelectedItems[0].ToString();
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void textBoxFrom_TextChanged(object sender, EventArgs e)
         {
             stationSearch(textBoxFrom.Text, listBoxFrom);
@@ -101,7 +125,6 @@ namespace SwissTransportGUI
             try
             {
                 textBoxFrom.Text = listBoxFrom.SelectedItems[0].ToString();
-                listBoxFrom.Items.Clear();
             }
             catch
             {
@@ -115,7 +138,6 @@ namespace SwissTransportGUI
             try
             {
                 textBoxTo.Text = listBoxTo.SelectedItems[0].ToString();
-                listBoxTo.Items.Clear();
             }
             catch
             {
@@ -135,19 +157,22 @@ namespace SwissTransportGUI
 
         private void listBoxSign_Click(object sender, EventArgs e)
         {
-            try
-            {
-                textBoxSign.Text = listBoxSign.SelectedItems[1].ToString();                
-            }
-            catch
-            {
-                
-            }
+            autoFill(e, textBoxSign, listBoxSign);
         }
 
         private void btnSignOutput_Click(object sender, EventArgs e)
         {
             stationBoard(listViewSign);
+        }
+
+        private void textBoxFrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            autoFill(e, textBoxFrom, listBoxFrom);
+        }
+
+        private void textBoxTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            autoFill(e, textBoxTo, listBoxTo);
         }
     }
 }
