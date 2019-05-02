@@ -32,21 +32,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.btnVerbindung = new System.Windows.Forms.Button();
+            this.btnConnection = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxAbfahrtstafel = new System.Windows.Forms.ComboBox();
-            this.btnAbfahrtstafel = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.btnSignOutput = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBoxVon = new System.Windows.Forms.TextBox();
-            this.textBoxNach = new System.Windows.Forms.TextBox();
-            this.listBoxVon = new System.Windows.Forms.ListBox();
-            this.listBoxNach = new System.Windows.Forms.ListBox();
-            this.listViewAusgabe = new System.Windows.Forms.ListView();
+            this.textBoxFrom = new System.Windows.Forms.TextBox();
+            this.textBoxTo = new System.Windows.Forms.TextBox();
+            this.listBoxFrom = new System.Windows.Forms.ListBox();
+            this.listBoxTo = new System.Windows.Forms.ListBox();
+            this.listViewOutput = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listBoxSign = new System.Windows.Forms.ListBox();
+            this.textBoxSign = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -83,15 +84,15 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(224, 22);
             this.dateTimePicker1.TabIndex = 6;
             // 
-            // btnVerbindung
+            // btnConnection
             // 
-            this.btnVerbindung.Location = new System.Drawing.Point(371, 258);
-            this.btnVerbindung.Name = "btnVerbindung";
-            this.btnVerbindung.Size = new System.Drawing.Size(110, 42);
-            this.btnVerbindung.TabIndex = 7;
-            this.btnVerbindung.Text = "Verbindungen suchen";
-            this.btnVerbindung.UseVisualStyleBackColor = true;
-            this.btnVerbindung.Click += new System.EventHandler(this.btnVerbindung_Click);
+            this.btnConnection.Location = new System.Drawing.Point(371, 258);
+            this.btnConnection.Name = "btnConnection";
+            this.btnConnection.Size = new System.Drawing.Size(110, 42);
+            this.btnConnection.TabIndex = 7;
+            this.btnConnection.Text = "Verbindungen suchen";
+            this.btnConnection.UseVisualStyleBackColor = true;
+            this.btnConnection.Click += new System.EventHandler(this.btnconnection_Click);
             // 
             // label4
             // 
@@ -107,37 +108,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(564, 66);
+            this.label5.Location = new System.Drawing.Point(499, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Ab welcher Station:";
             // 
-            // comboBoxAbfahrtstafel
+            // btnSignOutput
             // 
-            this.comboBoxAbfahrtstafel.FormattingEnabled = true;
-            this.comboBoxAbfahrtstafel.Location = new System.Drawing.Point(699, 62);
-            this.comboBoxAbfahrtstafel.Name = "comboBoxAbfahrtstafel";
-            this.comboBoxAbfahrtstafel.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxAbfahrtstafel.TabIndex = 11;
-            // 
-            // btnAbfahrtstafel
-            // 
-            this.btnAbfahrtstafel.Location = new System.Drawing.Point(827, 51);
-            this.btnAbfahrtstafel.Name = "btnAbfahrtstafel";
-            this.btnAbfahrtstafel.Size = new System.Drawing.Size(118, 53);
-            this.btnAbfahrtstafel.TabIndex = 12;
-            this.btnAbfahrtstafel.Text = "Abfahrtstafel ausgeben";
-            this.btnAbfahrtstafel.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(685, 118);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(295, 308);
-            this.listBox2.TabIndex = 13;
+            this.btnSignOutput.Location = new System.Drawing.Point(818, 59);
+            this.btnSignOutput.Name = "btnSignOutput";
+            this.btnSignOutput.Size = new System.Drawing.Size(118, 53);
+            this.btnSignOutput.TabIndex = 12;
+            this.btnSignOutput.Text = "Abfahrtstafel ausgeben";
+            this.btnSignOutput.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -150,59 +134,59 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Abfahrtstafel";
             // 
-            // textBoxVon
+            // textBoxFrom
             // 
-            this.textBoxVon.BackColor = System.Drawing.Color.White;
-            this.textBoxVon.Location = new System.Drawing.Point(66, 90);
-            this.textBoxVon.Name = "textBoxVon";
-            this.textBoxVon.Size = new System.Drawing.Size(122, 22);
-            this.textBoxVon.TabIndex = 15;
-            this.textBoxVon.TextChanged += new System.EventHandler(this.textBoxVon_TextChanged);
+            this.textBoxFrom.BackColor = System.Drawing.Color.White;
+            this.textBoxFrom.Location = new System.Drawing.Point(66, 90);
+            this.textBoxFrom.Name = "textBoxFrom";
+            this.textBoxFrom.Size = new System.Drawing.Size(122, 22);
+            this.textBoxFrom.TabIndex = 15;
+            this.textBoxFrom.TextChanged += new System.EventHandler(this.textBoxFrom_TextChanged);
             // 
-            // textBoxNach
+            // textBoxTo
             // 
-            this.textBoxNach.BackColor = System.Drawing.Color.White;
-            this.textBoxNach.Location = new System.Drawing.Point(264, 90);
-            this.textBoxNach.Name = "textBoxNach";
-            this.textBoxNach.Size = new System.Drawing.Size(114, 22);
-            this.textBoxNach.TabIndex = 16;
-            this.textBoxNach.TextChanged += new System.EventHandler(this.textBoxNach_TextChanged);
+            this.textBoxTo.BackColor = System.Drawing.Color.White;
+            this.textBoxTo.Location = new System.Drawing.Point(264, 90);
+            this.textBoxTo.Name = "textBoxTo";
+            this.textBoxTo.Size = new System.Drawing.Size(114, 22);
+            this.textBoxTo.TabIndex = 16;
+            this.textBoxTo.TextChanged += new System.EventHandler(this.textBoxTo_TextChanged);
             // 
-            // listBoxVon
+            // listBoxFrom
             // 
-            this.listBoxVon.FormattingEnabled = true;
-            this.listBoxVon.ItemHeight = 16;
-            this.listBoxVon.Location = new System.Drawing.Point(26, 118);
-            this.listBoxVon.Name = "listBoxVon";
-            this.listBoxVon.Size = new System.Drawing.Size(162, 132);
-            this.listBoxVon.TabIndex = 17;
-            this.listBoxVon.Click += new System.EventHandler(this.listBoxVon_Click);
+            this.listBoxFrom.FormattingEnabled = true;
+            this.listBoxFrom.ItemHeight = 16;
+            this.listBoxFrom.Location = new System.Drawing.Point(26, 118);
+            this.listBoxFrom.Name = "listBoxFrom";
+            this.listBoxFrom.Size = new System.Drawing.Size(162, 132);
+            this.listBoxFrom.TabIndex = 17;
+            this.listBoxFrom.Click += new System.EventHandler(this.listBoxFrom_Click);
             // 
-            // listBoxNach
+            // listBoxTo
             // 
-            this.listBoxNach.FormattingEnabled = true;
-            this.listBoxNach.ItemHeight = 16;
-            this.listBoxNach.Location = new System.Drawing.Point(216, 118);
-            this.listBoxNach.Name = "listBoxNach";
-            this.listBoxNach.Size = new System.Drawing.Size(162, 132);
-            this.listBoxNach.TabIndex = 18;
-            this.listBoxNach.Click += new System.EventHandler(this.listBoxNach_Click);
+            this.listBoxTo.FormattingEnabled = true;
+            this.listBoxTo.ItemHeight = 16;
+            this.listBoxTo.Location = new System.Drawing.Point(216, 118);
+            this.listBoxTo.Name = "listBoxTo";
+            this.listBoxTo.Size = new System.Drawing.Size(162, 132);
+            this.listBoxTo.TabIndex = 18;
+            this.listBoxTo.Click += new System.EventHandler(this.listBoxTo_Click);
             // 
-            // listViewAusgabe
+            // listViewOutput
             // 
-            this.listViewAusgabe.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewOutput.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listViewAusgabe.GridLines = true;
-            this.listViewAusgabe.Location = new System.Drawing.Point(26, 306);
-            this.listViewAusgabe.Name = "listViewAusgabe";
-            this.listViewAusgabe.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listViewAusgabe.Size = new System.Drawing.Size(455, 244);
-            this.listViewAusgabe.TabIndex = 19;
-            this.listViewAusgabe.UseCompatibleStateImageBehavior = false;
-            this.listViewAusgabe.View = System.Windows.Forms.View.Details;
-            this.listViewAusgabe.SelectedIndexChanged += new System.EventHandler(this.listViewAusgabe_SelectedIndexChanged);
+            this.listViewOutput.GridLines = true;
+            this.listViewOutput.Location = new System.Drawing.Point(26, 306);
+            this.listViewOutput.Name = "listViewOutput";
+            this.listViewOutput.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listViewOutput.Size = new System.Drawing.Size(455, 244);
+            this.listViewOutput.TabIndex = 19;
+            this.listViewOutput.UseCompatibleStateImageBehavior = false;
+            this.listViewOutput.View = System.Windows.Forms.View.Details;
+            this.listViewOutput.SelectedIndexChanged += new System.EventHandler(this.listViewOutput_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -216,8 +200,35 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Departure";
-            this.columnHeader3.Width = 149;
+            this.columnHeader3.Text = "Abfahrtszeit";
+            this.columnHeader3.Width = 150;
+            // 
+            // listBoxSign
+            // 
+            this.listBoxSign.FormattingEnabled = true;
+            this.listBoxSign.ItemHeight = 16;
+            this.listBoxSign.Location = new System.Drawing.Point(625, 113);
+            this.listBoxSign.Name = "listBoxSign";
+            this.listBoxSign.Size = new System.Drawing.Size(173, 84);
+            this.listBoxSign.TabIndex = 20;
+            this.listBoxSign.SelectedIndexChanged += new System.EventHandler(this.listBoxSign_SelectedIndexChanged);
+            // 
+            // textBoxSign
+            // 
+            this.textBoxSign.BackColor = System.Drawing.Color.White;
+            this.textBoxSign.Location = new System.Drawing.Point(625, 87);
+            this.textBoxSign.Name = "textBoxSign";
+            this.textBoxSign.Size = new System.Drawing.Size(173, 22);
+            this.textBoxSign.TabIndex = 21;
+            this.textBoxSign.TextChanged += new System.EventHandler(this.textBoxSign_TextChanged);
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(502, 249);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(434, 301);
+            this.listView1.TabIndex = 22;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
@@ -225,18 +236,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1010, 577);
-            this.Controls.Add(this.listViewAusgabe);
-            this.Controls.Add(this.listBoxNach);
-            this.Controls.Add(this.listBoxVon);
-            this.Controls.Add(this.textBoxNach);
-            this.Controls.Add(this.textBoxVon);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.textBoxSign);
+            this.Controls.Add(this.listBoxSign);
+            this.Controls.Add(this.listViewOutput);
+            this.Controls.Add(this.listBoxTo);
+            this.Controls.Add(this.listBoxFrom);
+            this.Controls.Add(this.textBoxTo);
+            this.Controls.Add(this.textBoxFrom);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.btnAbfahrtstafel);
-            this.Controls.Add(this.comboBoxAbfahrtstafel);
+            this.Controls.Add(this.btnSignOutput);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnVerbindung);
+            this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -253,21 +265,22 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button btnVerbindung;
+        private System.Windows.Forms.Button btnConnection;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxAbfahrtstafel;
-        private System.Windows.Forms.Button btnAbfahrtstafel;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button btnSignOutput;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxVon;
-        private System.Windows.Forms.TextBox textBoxNach;
-        private System.Windows.Forms.ListBox listBoxVon;
-        private System.Windows.Forms.ListBox listBoxNach;
-        private System.Windows.Forms.ListView listViewAusgabe;
+        private System.Windows.Forms.TextBox textBoxFrom;
+        private System.Windows.Forms.TextBox textBoxTo;
+        private System.Windows.Forms.ListBox listBoxFrom;
+        private System.Windows.Forms.ListBox listBoxTo;
+        private System.Windows.Forms.ListView listViewOutput;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ListBox listBoxSign;
+        private System.Windows.Forms.TextBox textBoxSign;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

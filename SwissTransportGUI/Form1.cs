@@ -20,7 +20,7 @@ namespace SwissTransportGUI
         //Transport Objekt erstellen
         Transport t = new Transport();
         // Methode um Dropdown Menu zu Öffnen und Vorschläge anzeigen
-        public void stationSuche(string StationsName, ListBox listBoxName)
+        public void stationSearch(string StationsName, ListBox listBoxName)
         {
             listBoxName.Items.Clear();
             Stations myStations = t.GetStations(StationsName);
@@ -39,21 +39,21 @@ namespace SwissTransportGUI
         }
 
         //Verbindungen anzeigen lassen
-        private void Verbindung(ListView listViewName)
+        private void Connections(ListView listViewName)
         {
-            listViewAusgabe.Items.Clear();
-            Connections verbindung = t.GetConnections(textBoxVon.Text, textBoxNach.Text);
+            listViewOutput.Items.Clear();
+            Connections connection = t.GetConnections(textBoxFrom.Text, textBoxTo.Text);
             
-            foreach (Connection c in verbindung.ConnectionList)
+            foreach (Connection c in connection.ConnectionList)
             {
                 DateTime Departure = DateTime.Parse(c.From.Departure);
                 DateTime Arrival = DateTime.Parse(c.To.Arrival);
                 try
                 {
                     ListViewItem item1 = new ListViewItem();
-                    listViewAusgabe.Items.Add(c.From.Station.Name);
-                    listViewAusgabe.Items.Add(c.To.Station.Name);
-                    item1.Text = Departure.ToShortTimeString();
+                    item1.Text = c.From.Station.Name;
+                    item1.SubItems.Add(c.To.Station.Name);
+                    item1.SubItems.Add(Departure.ToShortTimeString());
                     listViewName.Items.Add(item1);
                 }
                 catch
@@ -63,22 +63,22 @@ namespace SwissTransportGUI
             }
         }
 
-        private void textBoxVon_TextChanged(object sender, EventArgs e)
+        private void textBoxFrom_TextChanged(object sender, EventArgs e)
         {
-            stationSuche(textBoxVon.Text, listBoxVon);
+            stationSearch(textBoxFrom.Text, listBoxFrom);
         }
 
-        private void textBoxNach_TextChanged(object sender, EventArgs e)
+        private void textBoxTo_TextChanged(object sender, EventArgs e)
         {
-            stationSuche(textBoxNach.Text, listBoxNach);
+            stationSearch(textBoxTo.Text, listBoxTo);
         }
 
-        private void listBoxVon_Click(object sender, EventArgs e)
+        private void listBoxFrom_Click(object sender, EventArgs e)
         {
             try
             {
-                textBoxVon.Text = listBoxVon.SelectedItems[0].ToString();
-                listBoxVon.Items.Clear();
+                textBoxFrom.Text = listBoxFrom.SelectedItems[0].ToString();
+                listBoxFrom.Items.Clear();
             }
             catch
             {
@@ -87,12 +87,12 @@ namespace SwissTransportGUI
         }
 
         //in der Listbox doppelclick um Station auszuwählen
-        private void listBoxNach_Click(object sender, EventArgs e)
+        private void listBoxTo_Click(object sender, EventArgs e)
         {
             try
             {
-                textBoxNach.Text = listBoxNach.SelectedItems[0].ToString();
-                listBoxNach.Items.Clear();
+                textBoxTo.Text = listBoxTo.SelectedItems[0].ToString();
+                listBoxTo.Items.Clear();
             }
             catch
             {
@@ -100,14 +100,32 @@ namespace SwissTransportGUI
             }
         }
 
-        private void btnVerbindung_Click(object sender, EventArgs e)
+        private void btnconnection_Click(object sender, EventArgs e)
         {
-            Verbindung(listViewAusgabe);
+            Connections(listViewOutput);
         }
 
-        private void listViewAusgabe_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxSign_TextChanged(object sender, EventArgs e)
+        {
+            stationSearch(textBoxSign.Text, listBoxSign);
+        }
+
+        private void listBoxSign_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                textBoxSign.Text = listBoxTo.SelectedItems[0].ToString();
+                listBoxTo.Items.Clear();
+            }
+            catch
+            {
+                MessageBox.Show("Wählen sie bitte eine Station aus:");
+            }
         }
     }
 }
