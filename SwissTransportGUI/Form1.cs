@@ -190,7 +190,7 @@ namespace SwissTransportGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            createGoogleMaps(textBoxSign.Text);
+            createGoogleMaps(textBoxMaps.Text);
         }
 
         private void webBrowser1_DocumentCompleted_1(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -198,9 +198,19 @@ namespace SwissTransportGUI
             textBoxSign.Text = webBrowser1.Url.ToString();
         }
 
-        private void textBoxMaps_TextChanged(object sender, EventArgs e)
+        private void textBoxMaps_KeyDown(object sender, KeyEventArgs e)
         {
             autoFill(e, textBoxMaps, listBoxMaps);
+        }
+
+        private void textBoxMaps_TextChanged(object sender, EventArgs e)
+        {
+            stationSearch(textBoxMaps.Text, listBoxMaps);
+        }
+
+        private void listBoxMaps_Click(object sender, EventArgs e)
+        {
+            fillOnClick(textBoxMaps, listBoxMaps);
         }
     }
 }
