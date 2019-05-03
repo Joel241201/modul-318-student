@@ -230,5 +230,10 @@ namespace SwissTransportGUI
         {
             fillOnClick(textBoxMaps, listBoxMaps);
         }
+
+        private void btnStandort_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Url = new System.Uri("https://www.google.com/maps?q=");
+        }
     }
 }

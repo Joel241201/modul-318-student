@@ -60,6 +60,7 @@
             this.textBoxMaps = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btnMaps = new System.Windows.Forms.Button();
+            this.btnStandort = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.googleMaps.SuspendLayout();
@@ -313,6 +314,7 @@
             // 
             // googleMaps
             // 
+            this.googleMaps.Controls.Add(this.btnStandort);
             this.googleMaps.Controls.Add(this.label8);
             this.googleMaps.Controls.Add(this.label7);
             this.googleMaps.Controls.Add(this.listBoxMaps);
@@ -386,6 +388,16 @@
             this.btnMaps.UseVisualStyleBackColor = true;
             this.btnMaps.Click += new System.EventHandler(this.btnMaps_Click);
             // 
+            // btnStandort
+            // 
+            this.btnStandort.Location = new System.Drawing.Point(644, 69);
+            this.btnStandort.Name = "btnStandort";
+            this.btnStandort.Size = new System.Drawing.Size(128, 37);
+            this.btnStandort.TabIndex = 35;
+            this.btnStandort.Text = "Mein Standort";
+            this.btnStandort.UseVisualStyleBackColor = true;
+            this.btnStandort.Click += new System.EventHandler(this.btnStandort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -440,6 +452,7 @@
         private System.Windows.Forms.TextBox textBoxMaps;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button btnMaps;
+        private System.Windows.Forms.Button btnStandort;
     }
 }
 
