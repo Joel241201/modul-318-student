@@ -182,7 +182,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Zeit";
-            this.columnHeader3.Width = 78;
+            this.columnHeader3.Width = 97;
             // 
             // listBoxTo
             // 
