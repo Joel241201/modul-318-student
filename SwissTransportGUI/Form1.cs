@@ -28,12 +28,14 @@ namespace SwissTransportGUI
             {
                 try
                 {
-                    listBoxName.Items.Add(station.Name);
+                    if (station.Id != null)
+                    {
+                        listBoxName.Items.Add(station.Name);
+                    }
                 }
                 catch
                 {
-                    MessageBox.Show("Station sind Ungültig, bitte eine andere Station eingeben." +
-                        MessageBoxButtons.OK);
+                    MessageBox.Show("Geben sie bitte ein gültige Staion ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }  
             }
         }
@@ -57,21 +59,18 @@ namespace SwissTransportGUI
                 }
                 catch
                 {
-                    MessageBox.Show("Es gibt keine Verbindungen zwischen diesen Stationen");
+                    MessageBox.Show("Geben sie bitte ein gültige Staion ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
         //click auf Element in listBox um es auszuwählen
         private void fillOnClick(TextBox textBoxName, ListBox listBoxName)
         {
-            try
+            if(listBoxName.SelectedItems !=null && listBoxName.SelectedItems.Count >0)
             {
                 textBoxName.Text = listBoxName.SelectedItems[0].ToString();
             }
-            catch
-            {
-                MessageBox.Show("Wählen sie bitte eine Station aus:");
-            }
+            
         }
         //autoFill Methode
         private void autoFill(KeyEventArgs e, TextBox textBoxName, ListBox listBoxName)
@@ -93,7 +92,7 @@ namespace SwissTransportGUI
             }
             catch
             {
-                MessageBox.Show("Sie haben eine ungültige Taste gedrückt.");
+                MessageBox.Show("Sie haben eine ungültige Taste gedrückt.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -114,7 +113,6 @@ namespace SwissTransportGUI
                     listViewItem.SubItems.Add(stationBoard.To);
                     listViewItem.SubItems.Add(stationBoard.Stop.Departure.ToShortTimeString());
                     listViewItem.SubItems.Add(stationBoard.Operator);
-
                     listViewName.Items.Add(listViewItem);
                 }
                 catch
@@ -127,10 +125,9 @@ namespace SwissTransportGUI
         private void createGoogleMaps(string stationName)
         {
             Station stations = t.GetStations(stationName).StationList.First();
-
             string xcoordinate = stations.Coordinate.XCoordinate.ToString();
             string ycoordinate = stations.Coordinate.YCoordinate.ToString();
-            webBrowser1.Url = new System.Uri("https://www.google.com/maps?q=" + xcoordinate + "," + ycoordinate, System.UriKind.Absolute);
+            webBrowser1.Url = new System.Uri("https://www.google.com/maps?q=" + xcoordinate.Replace(",",".") + "," + ycoordinate.Replace(",","."), System.UriKind.Absolute);
         }
 
         private void textBoxFrom_TextChanged(object sender, EventArgs e)
@@ -170,7 +167,14 @@ namespace SwissTransportGUI
 
         private void btnSignOutput_Click(object sender, EventArgs e)
         {
-            stationBoard(textBoxSign.Text, listViewSign);
+            try
+            {
+                stationBoard(textBoxSign.Text, listViewSign);
+            }
+            catch
+            {
+                MessageBox.Show("Geben sie bitte ein gültige Staion ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void textBoxFrom_KeyDown(object sender, KeyEventArgs e)
@@ -188,9 +192,16 @@ namespace SwissTransportGUI
             autoFill(e, textBoxSign, listBoxSign);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMaps_Click(object sender, EventArgs e)
         {
-            createGoogleMaps(textBoxMaps.Text);
+            try
+            {
+                createGoogleMaps(textBoxMaps.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Geben sie bitte eine gültige Station ein.");
+            }
         }
 
         private void webBrowser1_DocumentCompleted_1(object sender, WebBrowserDocumentCompletedEventArgs e)

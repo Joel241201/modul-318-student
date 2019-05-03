@@ -51,7 +51,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMaps = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.textBoxMaps = new System.Windows.Forms.TextBox();
             this.listBoxMaps = new System.Windows.Forms.ListBox();
@@ -108,7 +108,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Red;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 9);
+            this.label4.Location = new System.Drawing.Point(20, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 32);
             this.label4.TabIndex = 9;
@@ -138,7 +138,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Red;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(496, 9);
+            this.label6.Location = new System.Drawing.Point(496, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(176, 32);
             this.label6.TabIndex = 14;
@@ -213,7 +213,7 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Abfahrtszeit";
+            this.columnHeader3.Text = "Zeit";
             this.columnHeader3.Width = 150;
             // 
             // listBoxSign
@@ -265,15 +265,15 @@
             this.columnHeader6.Text = "zeit";
             this.columnHeader6.Width = 73;
             // 
-            // button1
+            // btnMaps
             // 
-            this.button1.Location = new System.Drawing.Point(1519, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 49);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Google Maps";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnMaps.Location = new System.Drawing.Point(1519, 148);
+            this.btnMaps.Name = "btnMaps";
+            this.btnMaps.Size = new System.Drawing.Size(100, 49);
+            this.btnMaps.TabIndex = 6;
+            this.btnMaps.Text = "Google Maps";
+            this.btnMaps.UseVisualStyleBackColor = true;
+            this.btnMaps.Click += new System.EventHandler(this.btnMaps_Click);
             // 
             // webBrowser1
             // 
@@ -318,7 +318,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Red;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1014, 9);
+            this.label8.Location = new System.Drawing.Point(1014, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(184, 32);
             this.label8.TabIndex = 28;
@@ -335,7 +335,7 @@
             this.Controls.Add(this.listBoxMaps);
             this.Controls.Add(this.textBoxMaps);
             this.Controls.Add(this.webBrowser1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnMaps);
             this.Controls.Add(this.listViewSign);
             this.Controls.Add(this.textBoxSign);
             this.Controls.Add(this.listBoxSign);
@@ -386,7 +386,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMaps;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.TextBox textBoxMaps;
         private System.Windows.Forms.ListBox listBoxMaps;
