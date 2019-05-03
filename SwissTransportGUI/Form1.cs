@@ -19,7 +19,7 @@ namespace SwissTransportGUI
         }
         //Transport Objekt erstellen
         Transport t = new Transport();
-        // Methode um Dropdown Menu zu Öffnen und Vorschläge anzeigen
+        // Vorschläge anzeigen
         private void stationSearch(string StationsName, ListBox listBoxName)
         {
             listBoxName.Items.Clear();
@@ -152,7 +152,14 @@ namespace SwissTransportGUI
 
         private void btnconnection_Click(object sender, EventArgs e)
         {
-            connections(listViewOutput);
+            try
+            {
+                connections(listViewOutput);
+            }
+            catch
+            {
+                MessageBox.Show("Geben sie bitte ein gültige Staion ein.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void textBoxSign_TextChanged(object sender, EventArgs e)
