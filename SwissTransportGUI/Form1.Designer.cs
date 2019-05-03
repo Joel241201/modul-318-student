@@ -228,6 +228,7 @@
             this.textBoxSign.Size = new System.Drawing.Size(173, 22);
             this.textBoxSign.TabIndex = 3;
             this.textBoxSign.TextChanged += new System.EventHandler(this.textBoxSign_TextChanged);
+            this.textBoxSign.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSign_KeyDown);
             // 
             // listViewSign
             // 

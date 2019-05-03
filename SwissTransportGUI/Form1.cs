@@ -61,33 +61,19 @@ namespace SwissTransportGUI
                 }
             }
         }
-
-        private void stationBoard(ListView listViewName)
+        //click auf Element in listBox um es auszuwählen
+        private void fillOnClick(TextBox textBoxName, ListBox listBoxName)
         {
-            listViewSign.Items.Clear();
-            Stations s = t.GetStations(textBoxSign.Text);
-            Station selectedStation = s.StationList[listBoxSign.SelectedIndex];
-            StationBoardRoot stationBoard = t.GetStationBoard(textBoxSign.Text, selectedStation.Id);
-            foreach(StationBoard stationboard in stationBoard.Entries)
+            try
             {
-                try
-                {
-                    ListViewItem item1 = new ListViewItem();
-                    item1.Text = stationboard.Name;
-                    item1.SubItems.Add(stationboard.To);
-                    item1.SubItems.Add(stationboard.Stop.Departure.ToShortTimeString());
-                    listViewSign.Items.Add(item1);
-
-                    
-                    
-                }
-                catch
-                {
-                    MessageBox.Show("Ungültiger Wert");
-                }
+                textBoxName.Text = listBoxName.SelectedItems[0].ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Wählen sie bitte eine Station aus:");
             }
         }
-
+        //autoFill Methode
         private void autoFill(KeyEventArgs e, TextBox textBoxName, ListBox listBoxName)
         {
             try
@@ -107,10 +93,46 @@ namespace SwissTransportGUI
             }
             catch
             {
-
+                MessageBox.Show("Sie haben eine ungültige Taste gedrückt.")
             }
         }
-        private void textBoxFrom_TextChanged(object sender, EventArgs e)
+
+        //stationBoard methode
+        private void stationBoard(string stationName, ListView listViewName)
+        {
+            listViewName.Items.Clear();
+
+            Station station = t.GetStations(stationName).StationList.First();
+            StationBoardRoot stationBoardRoot = t.GetStationBoard(stationName, station.Id);
+
+            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
+            {
+                try
+                {
+                    ListViewItem listViewItem = new ListViewItem();
+                    listViewItem.Text = stationBoard.Name;
+                    listViewItem.SubItems.Add(stationBoard.To);
+                    listViewItem.SubItems.Add(stationBoard.Stop.Departure.ToShortTimeString());
+                    listViewItem.SubItems.Add(stationBoard.Operator);
+
+                    listViewName.Items.Add(listViewItem);
+                }
+                catch
+                {
+                    MessageBox.Show("Die Abfahrtstafel konnte nicht angezeigt werden.", "Caption", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+            }
+        }
+        //Google maps ausgewälte Station anzeigen lassen
+        private void createGoogleMaps(string stationName)
+        {
+            Station stations = t.GetStations(stationName).StationList.First();
+            string xcoordinate = stations.Coordinate.XCoordinate.ToString();
+            string ycoordinate = stations.Coordinate.YCoordinate.ToString();
+            webBrowser.Url = new System.Uri("https:/www.google.com/maps?q=" + xcoordinate + ", " + ycoordinate, System.UriKind.Absolute);
+        }
+
+            private void textBoxFrom_TextChanged(object sender, EventArgs e)
         {
             stationSearch(textBoxFrom.Text, listBoxFrom);
         }
@@ -122,27 +144,12 @@ namespace SwissTransportGUI
 
         private void listBoxFrom_Click(object sender, EventArgs e)
         {
-            try
-            {
-                textBoxFrom.Text = listBoxFrom.SelectedItems[0].ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Wählen sie bitte eine Station aus:");
-            }
+            fillOnClick(textBoxFrom, listBoxFrom);
         }
 
-        //in der Listbox doppelclick um Station auszuwählen
         private void listBoxTo_Click(object sender, EventArgs e)
         {
-            try
-            {
-                textBoxTo.Text = listBoxTo.SelectedItems[0].ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Wählen sie bitte eine Station aus:");
-            }
+            fillOnClick(textBoxTo, listBoxTo);
         }
 
         private void btnconnection_Click(object sender, EventArgs e)
@@ -157,12 +164,12 @@ namespace SwissTransportGUI
 
         private void listBoxSign_Click(object sender, EventArgs e)
         {
-            autoFill(e, textBoxSign, listBoxSign);
+            fillOnClick(textBoxSign, listBoxSign);
         }
 
         private void btnSignOutput_Click(object sender, EventArgs e)
         {
-            stationBoard(listViewSign);
+            stationBoard(textBoxSign.Text, listViewSign);
         }
 
         private void textBoxFrom_KeyDown(object sender, KeyEventArgs e)
@@ -173,6 +180,11 @@ namespace SwissTransportGUI
         private void textBoxTo_KeyDown(object sender, KeyEventArgs e)
         {
             autoFill(e, textBoxTo, listBoxTo);
+        }
+
+        private void textBoxSign_KeyDown(object sender, KeyEventArgs e)
+        {
+            autoFill(e, textBoxSign, listBoxSign);
         }
     }
 }
