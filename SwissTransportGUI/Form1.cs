@@ -93,7 +93,7 @@ namespace SwissTransportGUI
             }
             catch
             {
-                MessageBox.Show("Sie haben eine ungültige Taste gedrückt.")
+                MessageBox.Show("Sie haben eine ungültige Taste gedrückt.");
             }
         }
 
@@ -127,12 +127,13 @@ namespace SwissTransportGUI
         private void createGoogleMaps(string stationName)
         {
             Station stations = t.GetStations(stationName).StationList.First();
+
             string xcoordinate = stations.Coordinate.XCoordinate.ToString();
             string ycoordinate = stations.Coordinate.YCoordinate.ToString();
-            webBrowser.Url = new System.Uri("https:/www.google.com/maps?q=" + xcoordinate + ", " + ycoordinate, System.UriKind.Absolute);
+            webBrowser1.Url = new System.Uri("https://www.google.com/maps?q=" + xcoordinate + "," + ycoordinate, System.UriKind.Absolute);
         }
 
-            private void textBoxFrom_TextChanged(object sender, EventArgs e)
+        private void textBoxFrom_TextChanged(object sender, EventArgs e)
         {
             stationSearch(textBoxFrom.Text, listBoxFrom);
         }
@@ -185,6 +186,21 @@ namespace SwissTransportGUI
         private void textBoxSign_KeyDown(object sender, KeyEventArgs e)
         {
             autoFill(e, textBoxSign, listBoxSign);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            createGoogleMaps(textBoxSign.Text);
+        }
+
+        private void webBrowser1_DocumentCompleted_1(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            textBoxSign.Text = webBrowser1.Url.ToString();
+        }
+
+        private void textBoxMaps_TextChanged(object sender, EventArgs e)
+        {
+            autoFill(e, textBoxMaps, listBoxMaps);
         }
     }
 }
