@@ -54,13 +54,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.googleMaps = new System.Windows.Forms.TabPage();
+            this.btnStandort = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.listBoxMaps = new System.Windows.Forms.ListBox();
             this.textBoxMaps = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btnMaps = new System.Windows.Forms.Button();
-            this.btnStandort = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Home.SuspendLayout();
             this.googleMaps.SuspendLayout();
@@ -181,8 +181,8 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Abfahrtszeit";
-            this.columnHeader3.Width = 150;
+            this.columnHeader3.Text = "Zeit";
+            this.columnHeader3.Width = 78;
             // 
             // listBoxTo
             // 
@@ -329,6 +329,16 @@
             this.googleMaps.Text = "googleMaps";
             this.googleMaps.UseVisualStyleBackColor = true;
             // 
+            // btnStandort
+            // 
+            this.btnStandort.Location = new System.Drawing.Point(644, 69);
+            this.btnStandort.Name = "btnStandort";
+            this.btnStandort.Size = new System.Drawing.Size(128, 37);
+            this.btnStandort.TabIndex = 35;
+            this.btnStandort.Text = "Mein Standort";
+            this.btnStandort.UseVisualStyleBackColor = true;
+            this.btnStandort.Click += new System.EventHandler(this.btnStandort_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -387,16 +397,6 @@
             this.btnMaps.Text = "Google Maps";
             this.btnMaps.UseVisualStyleBackColor = true;
             this.btnMaps.Click += new System.EventHandler(this.btnMaps_Click);
-            // 
-            // btnStandort
-            // 
-            this.btnStandort.Location = new System.Drawing.Point(644, 69);
-            this.btnStandort.Name = "btnStandort";
-            this.btnStandort.Size = new System.Drawing.Size(128, 37);
-            this.btnStandort.TabIndex = 35;
-            this.btnStandort.Text = "Mein Standort";
-            this.btnStandort.UseVisualStyleBackColor = true;
-            this.btnStandort.Click += new System.EventHandler(this.btnStandort_Click);
             // 
             // Form1
             // 
